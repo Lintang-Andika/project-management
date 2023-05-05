@@ -1,3 +1,15 @@
+//Help
+// When the user clicks on <div>, open the popup
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+
+function creatorPopup() {
+  var creators = document.getElementById("cPopup");
+  creators.classList.toggle("show");
+}
+
 //MAP
 var map = L.map('map').setView([39.0501, -105.5821], 7);
 
@@ -499,12 +511,13 @@ var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 1, 4014.588995, 24484.51747, 49835.15273, 171804.0544],
+        grades = [0, 0.1, 4014.588996, 24484.51748, 49835.15274, 171804.0545],
         labels = ['N/A', 'Very Low', 'Relatively Low', 'Moderate', 'Relatively High', 'Very High'];
 
+    div.innerHTML += 'Expected Annual Loss <br>'.bold();
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
+        div.innerHTML += 
             '<i style="background:' + getColorC(grades[i]) + '"></i> ' +
             labels[i] + ('<br>');
     }
@@ -523,6 +536,7 @@ legend.onAdd = function (map) {
         grades = [0.1, 0.3, 0.5, 0.7, 0.9],
         labels = ['Very Low Vulnerability', 'Relatively Low Vulnerability', 'Moderate Vulnerability', 'Relatively High Vulnerability', 'Very High Vulnerability'];
 
+    div.innerHTML += 'Vulnerable Populations <br>'.bold();
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
@@ -582,9 +596,9 @@ const html = document.documentElement;const height1 = Math.max(body.scrollHeight
 const width1 = $(window).width();
 
 // set the dimensions and margins of the graph
-const margin = {top: 30, right: 75, bottom: 10, left: 75},
+const margin = {top: 45, right: 75, bottom: 10, left: 75},
   width = 0.5*width1 - margin.left - margin.right,
-  height = 0.8*height1 - margin.top - margin.bottom;
+  height = 0.65*height1 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 const svg = d3.select("#graph")
@@ -629,21 +643,63 @@ d3.csv("data/results1.csv").then( function(data) {
     // first every group turns grey
     d3.selectAll(".line")
       .transition().duration(200)
-      .style("stroke", "lightgrey")
+      .style("stroke", "#8B4000")
       .style("opacity", "0.2")
     // Second the hovered specie takes its color
     d3.selectAll("." + selected_specie)
       .transition().duration(200)
-      .style("stroke", "#69b3a2")
+      .style("stroke", "#00158b")
       .style("opacity", "1")
+    svg
+      .append("rect")
+      .attr("y", -44)
+      .attr("x", -50)
+      .attr("z", 100)
+      .attr("width", 150)
+      .attr("height", 18)
+      .attr("fill", "white")
+    svg
+      .append("text")
+      .style("text-anchor", "middle")
+      .style("font-size", "14px")
+      .attr("y", -30)
+      .attr("x", 20)
+      .attr("z", 100)
+      .attr("width", 150)
+      .attr("height", 150)
+      .attr("fill", "white")
+      .text(function(d) { return selected_specie; })
+      .style("fill", "black")
+
   }
 
   // Unhighlight
   const doNotHighlight = function(event, d){
     d3.selectAll(".line")
       .transition().duration(200).delay(1000)
-      .style("stroke", "#69b3a2" )
+      .style("stroke", "#8B4000" )
       .style("opacity", "1")
+
+    svg
+      .append("rect")
+      .attr("y", -44)
+      .attr("x", -50)
+      .attr("z", 99)
+      .attr("width", 150)
+      .attr("height", 18)
+      .attr("fill", "white")
+    svg 
+      .append("text")
+      .style("text-anchor", "middle")
+      .style("font-size", "14px")
+      .attr("y", -30)
+      .attr("x", 20)
+      .attr("z", 100)
+      .attr("width", 150)
+      .attr("height", 150)
+      .attr("fill", "white")
+      .text("Hover over a line")
+      .style("fill", "black")
   }
 
   // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
@@ -659,8 +715,9 @@ d3.csv("data/results1.csv").then( function(data) {
       .attr("class", function (d) { return "line " + d.Hazards } ) // 2 class for each line: 'line' and the group name
       .attr("d",  path)
       .style("fill", "none" )
-      .style("stroke", "#69b3a2" )
+      .style("stroke", "#8B4000" )
       .style("opacity", 0.5)
+      .style("lineWidth", 5000)
       .on("mouseover", highlight)
       .on("mouseleave", doNotHighlight )
 
