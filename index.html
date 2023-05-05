@@ -4,7 +4,7 @@
 <head>
   <!--meta charset="utf-8"-->
   <meta name="viewport" content="width=device-width">
-  <title>Correlation between Vulnerable Populations and Expected Annual Loss of Natural Hazards in Colorado</title>
+  <title>Colorado Natural Hazards Environmental Justice</title>
 
   <!--put your external stylesheet links here-->
   <link rel="stylesheet" href="lib/leaflet.css" />
@@ -38,27 +38,27 @@
     <div class="question">Learn More</div>
 
     <div class="popup">
-      <h3>How safe is southern Florida of sea level rise?</h3>
-      <p>With the inevitable rise in sea levels, many coastal areas are at risk of inundation.</p>
-      <p>Florida, famously known for its low elevation, is one of the most at risk states in the United States.
-        Being aware of the risks of sea level rise in counties of southern Florida is important as lives of hundreds of
-        thousands of people will be affected.</p>
-      <p>The National Oceanic and Atmospheric Administration (NOAA) has developed three sea level rise scenarios: low,
-        intermediate, and high.</p>
+      <h3>How at risk from natural hazards are vulnerable populations in Colorado?</h3>
+      <p>With climate change, natural hazards are expeced to rise in frequency and magnitude.</p>
+      <p>Colorado, a state that has been hit several large natural hazards in the past decade, such as the 2013 Colorado floods and several wildfires, 
+        is at risk of many different natural hazards. </p>
+      <p>The Federal Emergency Management Agency (FEMA) has developed methods to calculate the expected annual loss of each county from different natural hazards.</p>
+      <p>With the rising risk of natural hazards, the topic of environmental justice comes to mind as vulnerable populations would be even more vulnerable.
+        <br>- Environmental justice is a movement that seeks fair treatment for all people with respect of environmental issues.
+        <br>- Vulnerable populations are groups that are of higher risk for poor health as a result of different factors such as: social, economic, or political.
+      </p>
       <div class="tell-me">
         <p>Tell me more!</p>
         <div class="popup2">
-          <h4>Sea Level Rise Scenarios</h4>
-          <p class="sub-levels"><strong>low</strong>: assumes nations successfully limit global warming to less than 2
-            degrees Celcius and ice loss is limited. Sea level rise is projected to rise about 1.6 feet by 2100</p>
-          <p class="sub-levels"><strong>intermediate</strong>: assumes global carbon emissions rise and then decline by
-            the middle of the century, and ice sheets melt at rates in line with historical observations. Sea level rise
-            is projected to rise about 4 feet by 2100</p>
-          <p class="sub-levels"><strong>high</strong>: assumes a continued rise in global carbon emissions and
-            increasing loss of land ice. Sea level rise is projected to rise about 6.5 feet by 2100</p>
-          <p><a href="https://www.ucsusa.org/resources/underwater" target="_blank">Click here</a> for more information
-            regarding rising seas and its implications across the United States.</p>
-          <p><a href="https://coast.noaa.gov/slrdata/" target="_blank">Click here</a> for the data of inundated areas from NOAA.</p>
+          <h4>Analysis for this project</h4>
+          <p>To see whether there is a correlation between the expexted annual loss from different natural hazards and various vulnerable populations, 
+            an analysis using correlation statistics was done and is shown on the graph. The results of the analysis are values ranging from -1 to 1 meaning:</p>
+          <p class="sub-levels"><strong>-1</strong>: Strong negative correlation. A county with a high expected annual loss would likely also have low vulnerable population values
+          <br><br><strong>0</strong>: No correlation.
+          <br><br><strong>1</strong>: Strong positive correlation. A county with a high expected annual loss would likely also have high vulnerable population values</p>
+          <p><a href="https://hazards.fema.gov/nri/expected-annual-loss" target="_blank">Click here</a> for more information
+            regarding the expected annual loss data from FEMA. <br>
+          <a href="https://demography.dola.colorado.gov/assets/html/county.html" target="_blank">Click here</a> for the data of vulnerable populations.</p>
         </div>
       </div>
     </div>
@@ -96,38 +96,25 @@
     <span class="popuptext" id="myPopup">
       <h2>Help:</h2>
       <h4>Map:</h4>
-      <p>Click on the <img src="img/layers.png" id="popimg"> symbol on the map to open the layers menu. <br> There are
-        options to turn off the county colors and add the projected inundated areas in 2100 for different climate
-        scenarios.</p>
-      <p>Click on the <img src="img/search.png" id="popimg"> symbol on the map to search for a specific location on the
-        map</p>
+      <p>Click on the box on the top right of the map to open the layers menu. 
+        <br> There are options to select expected annual losses from different natural hazards 
+        and also options to overlay it with a choropleth map of different vulnerable populations.</p>
       <h4>Graph:</h4>
-      <img src="img/themes.png" id="themimg">
-      <p>Click on one of the theme buttons to see the risk of the selected theme for each county grouped by climate
-        scenario. <br> <em>If the data for 2060 does not show up, click on the button again</em>.</p>
-      <p><a href="https://youtu.be/9a2qxUOaDK8" target="_blank">Click here</a> for a short demo on how to use the app.</p>
+      <p>The graph is a parallel coordinates plot that shows the correlation between a natural
+        hazards expected annual loss and different vulnerable populations. 
+        Each line represents a different natural hazard.<br> <br>
+        Hover over a line to highlight in and see what natural hazard it represents.</p>
       <p id="exit">Click anywhere within this box to close it</p>
     </span>
   </div>
 
-  <div class="creators" onclick="creatorPopup()">About the creators
+  <div class="creators" onclick="creatorPopup()">About the creator
     <span class="creatortext" id="cPopup">
-      <p>This app was created as the final project for University of Colorado's <a
-          href="https://experts.colorado.edu/display/coursename_GEOG-4043" target="_blank">Advanced Visualization and
-          Web Mapping Class</a> offered by <a href="https://www.colorado.edu/geography/" target="_blank">CU Boulder's
-          Geography Department.</a> and taught by <a href="https://www.colorado.edu/geography/morteza-karimzadeh"
-          target="_blank">Dr. Morteza Karimzadeh</a>.</p>
-      <p>The students who developed this app were:
-      <ul>
-        <li>Lintang Andika - lian1451@colorado.edu</li>
-        <li>Chris Myers - chmy1412@colorado.edu</li>
-        <li>Austin Soelzer - auso2686@colorado.edu</li>
-      </ul>
-      </p>
-      <p>We would also like to give credits to the teaching assistant for this class, <a
-          href="https://www.colorado.edu/geography/thomas-herrmann" target="_blank">Thomas Herrmann</a>, who guided us
-        through the development of this app.
-      </p>
+      <p>This app was created by Lintang Andika (lian1451@colorado.edu) as a project for University of Colorado's <a
+          href="https://experts.colorado.edu/display/coursename_GEOG-4503" target="_blank">GIS: Project Management Class</a> 
+          offered by <a href="https://www.colorado.edu/geography/" target="_blank">CU Boulder's
+          Geography Department.</a> and taught by <a href="https://www.colorado.edu/geography/sarah-kelly-0"
+          target="_blank">Prof. Sarah Kelly</a>.</p>
       <p>The libraries used to develop this app were: <a href="https://leafletjs.com/" target="_blank">Leaflet</a> and
         <a href="https://d3js.org/" target="_blank">D3</a>
       </p>
